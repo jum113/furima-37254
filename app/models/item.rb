@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordAExtensions
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :genre
   belongs_to :status
   belongs_to :delivery_charge
