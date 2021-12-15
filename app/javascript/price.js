@@ -5,7 +5,7 @@ function price(){
     const profit = document.getElementById("profit");
     const value = itemPrice.value;
     let tax = 10;
-    let charge = value / tax;
+    let charge = Math.floor(value / tax);
     addTaxPrice.innerHTML = charge;
     profit.innerHTML = value - charge;
   });
