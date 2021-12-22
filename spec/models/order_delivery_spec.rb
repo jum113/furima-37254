@@ -50,6 +50,21 @@ RSpec.describe OrderDelivery, type: :model do
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include("Telephone number can't be blank")
       end
+      it 'telephone_numberが9桁以下では購入できない' do
+        @order_delivery.telephone_number = '090123456'
+        @order_delivery.valid?
+        expect(@order_delivery.errors.full_messages).to include('Telephone number is invalid. Exclude hyphen(-)')
+      end
+      it 'telephone_numberが12桁以上では購入できない' do
+        @order_delivery.telephone_number = '090123456789'
+        @order_delivery.valid?
+        expect(@order_delivery.errors.full_messages).to include('Telephone number is invalid. Exclude hyphen(-)')
+      end
+      it 'telephone_numberに半角数字以外が含まれている場合購入できない' do
+        @order_delivery.telephone_number = '０９０１２３４５６７８'
+        @order_delivery.valid?
+        expect(@order_delivery.errors.full_messages).to include('Telephone number is invalid. Exclude hyphen(-)')
+      end
       it 'telephone_numberが半角のハイフンを含まない正しい形式でないと購入できない' do
         @order_delivery.telephone_number = '090-1234-5678'
         @order_delivery.valid?
