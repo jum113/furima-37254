@@ -5,7 +5,7 @@ class OrderDelivery
   with_options presence: true do
     validates :user_id, :item_id
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'は無効です。ハイフンを入れてください' }
-    validates :delivery_area_id, numericality: { other_than: 1, message: "を入力してください" }
+    validates :delivery_area_id, numericality: { other_than: 1, message: 'を入力してください' }
     validates :municipality, :address
     validates :telephone_number, format: { with: /\A[0-9]{10,11}\z/, message: 'は無効です。ハイフンを入れないでください' }
     validates :token
