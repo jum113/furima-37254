@@ -7,11 +7,11 @@ class Item < ApplicationRecord
   belongs_to :delivery_date
 
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   has_one :order
 
   with_options presence: true do
-    validates :image
+    validates :images
     validates :name
     validates :description
   end
@@ -24,4 +24,5 @@ class Item < ApplicationRecord
     validates :delivery_area_id
     validates :delivery_date_id
   end
+  validates :images, length: { minimum: 1, maximum: 5, message: 'は1枚以上5枚以下にしてください' }
 end
