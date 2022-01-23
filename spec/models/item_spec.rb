@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品' do
     context '商品出品できる場合' do
-      it 'nameとdescription、priceとgenre_id、status_idとdelivery_charge_id、delivery_area_idとdelivery_date_id、imageが存在する場合保存できる' do
+      it 'nameとdescription、priceとgenre_id、status_idとdelivery_charge_id、delivery_area_idとdelivery_date_id、imagesが存在する場合保存できる' do
         expect(@item).to be_valid
       end
     end
@@ -52,7 +52,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('発送日数を入力してください')
       end
-      it 'imageが空では保存できない' do
+      it 'imagesが空では保存できない' do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('画像を入力してください')
