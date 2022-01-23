@@ -2,9 +2,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @item = Item.find(params[:item_id])
-    if @comment.save
-      CommentChannel.broadcast_to @item, { comment: @comment, user: @comment.user }
-    end
+    CommentChannel.broadcast_to @item, { comment: @comment, user: @comment.user } if @comment.save
   end
 
   private
