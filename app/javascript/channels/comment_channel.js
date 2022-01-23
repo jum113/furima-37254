@@ -1,9 +1,12 @@
 import consumer from "./consumer"
 
 if (location.pathname.match(/\/items\/\d/)){
-  console.log('読み込み完了')
 
-  consumer.subscriptions.create("CommentChannel", {
+  consumer.subscriptions.create({
+    channel: 'CommentChannel',
+    item_id: location.pathname.match(/\d+/)[0]
+  }, {
+
     connected() {
       // Called when the subscription is ready for use on the server
     },
@@ -13,7 +16,6 @@ if (location.pathname.match(/\/items\/\d/)){
     },
 
     received(data) {
-      console.log(data)
       const html = `
         <div class="comment">
           <p class="user-info">${data.user.nickname}: </p>
