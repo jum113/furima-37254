@@ -1,0 +1,25 @@
+.comment-box{
+  display: flex;
+}
+
+.comment-text{
+  display: block;
+  margin-top: 20px;
+}
+
+.comment-btn{
+  cursor: pointer;
+}
+
+.comment{
+  display: flex;
+}
+
+.comment p{
+  margin: 0;
+}
+
+.user-info{
+  color: gray;
+  font-weight: bold;
+}
